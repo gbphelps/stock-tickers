@@ -1,3 +1,3 @@
-const key = "Tpk_3a27df657c944490816e573504856c18";
+const key = "pk_3df0acc055da49eb85fdb19acac48968";
 
 "https://sandbox.iexapis.com/stable"
