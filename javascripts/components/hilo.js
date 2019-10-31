@@ -14,7 +14,7 @@ export default ({high, low, current}) => {
     return (
         <div style={{display: 'flex', alignItems: 'center', fontSize: 8, position: 'relative'}}>
             <div style={{position: 'absolute', right: w + 6 }}>{ Number(low).toFixed(2) }</div>
-            <div style={{height: trackHeight, width: w, position: 'relative', background: '#cddae7'}}>
+            <div style={{height: trackHeight, width: w, position: 'relative', background: '#cddae7', borderRadius: 1000}}>
                 <div style={{height: 10, width: 10, background: '#cddae7', borderRadius: "50%", position: 'absolute', top: -(r-trackHeight)/2 , left: left}}></div>
             </div>
             <div style={{position: 'absolute', left: w + 6 }}>{ Number(high).toFixed(2) }</div>
