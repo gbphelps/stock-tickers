@@ -13,7 +13,7 @@ const subscribers = {};
 
     function addTimeSeries(symbol,range){
         return new Promise(resolve => {
-            const url = `https://sandbox.iexapis.com/stable/stock/${symbol}/chart/${range}?token=Tpk_3a27df657c944490816e573504856c18`;
+            const url = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/${range}?token=pk_3df0acc055da49eb85fdb19acac48968`;
             
             if (symbolData[symbol] && symbolData[symbol].timeSeries){
                 resolve();
@@ -45,7 +45,7 @@ const subscribers = {};
                 }
                 if (request.readyState === 4) resolve();
             }
-            request.open('GET',`https://sandbox.iexapis.com/stable/stock/${symbol}/intraday-prices?chartInterval=15&token=Tpk_3a27df657c944490816e573504856c18`);
+            request.open('GET',`https://cloud.iexapis.com/stable/stock/${symbol}/intraday-prices?chartInterval=15&token=pk_3df0acc055da49eb85fdb19acac48968`);
             request.send();
         })
     }
@@ -53,8 +53,13 @@ const subscribers = {};
     //Promise
     function setupListener(symbol){
         return new Promise(resolve => {
-            const url = `https://sandbox-sse.iexapis.com/stable/stocksUS5second?symbols=${symbol}&token=Tpk_3a27df657c944490816e573504856c18`;
-            sources[symbol] = new EventSource(url);         
+            const url = `https://cloud-sse.iexapis.com/stable/stocksUSNoUTP?symbols=${symbol}&token=pk_3df0acc055da49eb85fdb19acac48968`;
+            sources[symbol] = new EventSource(url);
+             
+            sources[symbol].onerror = () => {
+                resolve();
+            }
+
             sources[symbol].onmessage = m => {
                 const data = JSON.parse(m.data)[0];
                 set(symbol, data);

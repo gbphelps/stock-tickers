@@ -21,7 +21,7 @@ export default (function(){
         }
     }
 
-    getSymbols.open('GET','https://sandbox.iexapis.com/stable/ref-data/symbols?token=Tpk_3a27df657c944490816e573504856c18');
+    getSymbols.open('GET','https://cloud.iexapis.com/stable/ref-data/symbols?token=pk_3df0acc055da49eb85fdb19acac48968');
     getSymbols.send();
 
     return function register(that){ context = that; context.setState({symbols}) }

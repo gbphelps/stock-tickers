@@ -18,8 +18,10 @@ export default class Feed extends React.Component{
         const promises = Array.from(this.state.symbols).map(symbol => {
             return state.fetch(symbol)
         });
-
-        Promise.all(promises).then(() => this.setState({ready: true}))
+        Promise.all(promises).then(() => {
+            this.setState({ready: true});
+            console.log('fine')
+        })
     }
 
     setOrder(order){
